@@ -12,11 +12,11 @@ try:
 
     # Handle missing values
     df["description"] = df["description"].fillna("No description")
-    df = df.dropna(subset=["title", "publishedAt"])  # title/date must exist
+    df = df.dropna(subset=["title", "publishedAt"])
 
-    # Convert date to YYYY-MM-DD
-    df["publishedAt"] = pd.to_datetime(df["publishedAt"], errors="coerce").dt.strftime("%Y-%m-%d")
-    df = df.dropna(subset=["publishedAt"])
+    # Convert publishedAt to date (YYYY-MM-DD)
+    df["date"] = pd.to_datetime(df["publishedAt"], errors="coerce").dt.strftime("%Y-%m-%d")
+    df = df.dropna(subset=["date"])
 
     # Map company names to tickers
     company_map = {
@@ -26,7 +26,7 @@ try:
         "Microsoft": "MSFT",
         "Walmart": "WMT"
     }
-    df["company"] = df["company"].map(company_map)
+    df["company"] = df["company"].map(company_map).fillna(df["company"])
 
     # Save cleaned data
     df.to_csv("data/cleaned_news.csv", index=False, encoding="utf-8")
