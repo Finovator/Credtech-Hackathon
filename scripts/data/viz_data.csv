@@ -1,6 +1,0 @@
-company,price,volatility,gdp,unemployment_rate,sentiment,data_points
-AAPL,215.8,0.01,23685.29,4.2,0.0,23
-AMZN,225.55,0.01,23685.29,4.2,0.0,23
-MSFT,518.02,0.02,23685.29,4.2,0.0,23
-TSLA,323.36,0.02,23685.29,4.2,0.0,23
-WMT,98.7,0.01,23685.29,4.2,0.0,23

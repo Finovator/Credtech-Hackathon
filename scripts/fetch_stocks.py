@@ -14,5 +14,5 @@ for company in companies:
             "change": row["change"]
         })
 stock_df = pd.DataFrame(stock_data)
-stock_df.to_csv("stocks.csv", index=False)
+stock_df.to_csv("data/stocks.csv", index=False)
 print(stock_df) 
