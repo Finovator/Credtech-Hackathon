@@ -5,14 +5,18 @@ try:
     if not {"company", "date", "price", "volatility", "gdp", "unemployment_rate", "sentiment"}.issubset(df.columns):
         raise KeyError("combined_data.csv missing required columns")
     
-    # Summarize: mean values per company
+    # Summarize: mean and count of data points per company
     viz_df = df.groupby("company").agg({
         "price": "mean",
         "volatility": "mean",
         "gdp": "mean",
         "unemployment_rate": "mean",
-        "sentiment": "mean"
+        "sentiment": "mean",
+        "date": "count"  # Add count of data points
     }).reset_index()
+    
+    # Rename count column for clarity
+    viz_df = viz_df.rename(columns={"date": "data_points"})
     
     # Round for readability
     viz_df = viz_df.round(2)
