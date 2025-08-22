@@ -1,0 +1,46 @@
+/* General background */
+body {
+    background-color: #f8f9fb;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #333333;
+}
+
+/* Center main app */
+.stApp {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* Sidebar */
+.stSidebar {
+    background-color: #1e1e2f !important;
+    color: #ffffff !important;
+}
+
+.stSidebar [data-testid="stSidebarContent"] {
+    padding: 20px;
+}
+
+.stSidebar h1, .stSidebar h2, .stSidebar h3 {
+    color: #ffffff !important;
+}
+
+/* Titles */
+h1, h2, h3 {
+    color: #1e1e2f;
+    font-weight: 600;
+}
+
+/* Markdown text */
+.stMarkdown {
+    font-size: 16px;
+    color: #444444;
+}
+
+/* Charts */
+.js-plotly-plot .plotly {
+    border-radius: 12px;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+    background: white;
+    padding: 10px;
+}
