@@ -82,7 +82,26 @@ Data Generality vs. Specificity: Model trained on structured company features; c
 ---
 
 ## 📊 Model Comparisons
-Model	            Accuracy	Precision	Recall	Explainability
-LogisticRegression	    82%	         0.79	  0.76	 High (coefficients + SHAP)
-RandomForest	        87%	         0.83	  0.81	 Medium (tree-based SHAP)
-XGBoost	                90%	         0.86	  0.84	 Medium-High (SHAP integration)
+1.Logistic Regression
+Accuracy: 76%
+AUC: 0.71
+Interpretability: High (easy to explain)
+Deployment Readiness: ✅ Easy to deploy
+
+2.Random Forest
+Accuracy: 83%
+AUC: 0.79
+Interpretability: Medium (requires SHAP for better explanation)
+Deployment Readiness: ⚠️ Needs SHAP support
+
+3.XGBoost
+Accuracy: 86%
+AUC: 0.82
+Interpretability: Low (black-box model, hard to explain)
+Deployment Readiness: ⚠️ Needs SHAP
+
+4.Hybrid Model (Logistic Regression + SHAP)
+Accuracy: 80%
+AUC: 0.75
+Interpretability: ✅ Very High (best balance of explainability and performance)
+Deployment Readiness: ✅ Easy
