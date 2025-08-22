@@ -12,6 +12,17 @@ def load_data():
     viz_df = pd.read_csv("data/viz_data.csv")
     news_viz_df = pd.read_csv("data/news_viz.csv")
     scores_df = pd.read_csv("data/scores.csv")
+    mapping = {
+    "AAPL": "Apple",
+    "TSLA": "Tesla",
+    "AMZN": "Amazon",
+    "MSFT": "Microsoft",
+    "WMT": "Walmart"
+    }
+    for df in [viz_df, news_viz_df, scores_df]:
+        if "company" in df.columns:
+            df["company"] = df["company"].replace(mapping)
+
     return viz_df, news_viz_df, scores_df
 
 viz_df, news_viz_df, scores_df = load_data()
