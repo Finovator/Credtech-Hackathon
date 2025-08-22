@@ -1,6 +1,6 @@
 company,avg_sentiment,positive_count,negative_count,neutral_count,total_articles
-AAPL,0.1341,2,1,2,5
-AMZN,0.2734,4,0,1,5
-MSFT,0.26212,2,1,2,5
-TSLA,0.13406,2,2,1,5
-WMT,0.26462,4,1,0,5
+AAPL,0.31322,2,0,3,5
+AMZN,0.48172,4,1,0,5
+MSFT,0.39493999999999996,4,0,1,5
+TSLA,-0.16374,1,2,2,5
+WMT,0.19982000000000003,3,2,0,5

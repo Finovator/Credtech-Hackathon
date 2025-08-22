@@ -11,7 +11,7 @@ try:
     df = df.drop_duplicates(subset=["company", "title"])
 
     # Handle missing values
-    df["description"] = df["description"].fillna("No description")
+    df["description"] = df["description"].fillna("Generic news update")  # More likely to have sentiment
     df = df.dropna(subset=["title", "publishedAt"])
 
     # Convert publishedAt to date (YYYY-MM-DD)
