@@ -6,20 +6,23 @@ try:
     combined_df["date"] = pd.to_datetime(combined_df["date"])
     news_df["date"] = pd.to_datetime(news_df["date"])
 
-    # Debug: Print column names before merge
-    print("combined_df columns:", combined_df.columns.tolist())
-    print("news_df columns:", news_df.columns.tolist())
+    # Debug: Print date ranges
+    print("combined_df date range:", combined_df["date"].min(), "to", combined_df["date"].max())
+    print("news_df date range:", news_df["date"].min(), "to", news_df["date"].max())
 
     model_df = pd.merge_asof(
         combined_df.sort_values("date"),
         news_df.sort_values("date"),
         on="date",
         by="company",
-        direction="backward"
+        direction="nearest",
+        tolerance=pd.Timedelta(days=30)  # Increased tolerance
     )
-    # Check available columns before selection
-    print("model_df columns after merge:", model_df.columns.tolist())
-    model_df = model_df[["company", "date", "price", "volatility", "gdp", "unemployment_rate", "sentiment"]]
+    # Debug: Print merged data sample
+    print("model_df head after merge:\n", model_df[["company", "date", "sentiment_score"]].head(10))
+
+    # Select columns and rename sentiment_score to sentiment
+    model_df = model_df[["company", "date", "price", "volatility", "gdp", "unemployment_rate", "sentiment_score"]]
     model_df = model_df.rename(columns={"sentiment_score": "sentiment"})
     model_df = model_df.fillna({"sentiment": 0})
     model_df.to_csv("data/model_data.csv", index=False)
