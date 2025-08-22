@@ -42,22 +42,26 @@ pip install -r requirements.txt
 # 4. Start the app
 streamlit run app.py
 
-## 🏗️ System Architecture
-User (Web Browser)
-        │
-        ▼
-   Streamlit Frontend
-        │
-        ▼
-   ML Backend (Scikit-learn models)
-        │
-        ├── Prediction Engine (Credit Score)
-        │
-        └── Explainability Layer (SHAP)
-                │
-                ▼
-         Visualizations (Plots, KPIs, Tables)
+```
 
+---
+
+## 🏗️ System Architecture
+
+User (Web Browser)
+  │
+  ▼
+Streamlit Frontend
+  │
+  ▼
+ML Backend (Scikit-learn models)
+  │
+  ├── Prediction Engine (Credit Score)
+  │
+  └── Explainability Layer (SHAP)
+    │
+    ▼
+  Visualizations (Plots, KPIs, Tables)
 
 ## ⚖️ Key Tradeoffs
 
