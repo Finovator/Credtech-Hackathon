@@ -24,8 +24,6 @@ This project was developed for the Hackathon to showcase Responsible AI in finan
 
 ## ⚡ Local Setup Instructions
 
-## ⚡ Local Setup Instructions
-
 Run the following commands step by step:
 
 ```bash
