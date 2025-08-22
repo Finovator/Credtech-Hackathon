@@ -48,20 +48,26 @@ streamlit run app.py
 
 ## 🏗️ System Architecture
 
-User (Web Browser)
-  │
-  ▼
-Streamlit Frontend
-  │
-  ▼
-ML Backend (Scikit-learn models)
-  │
-  ├── Prediction Engine (Credit Score)
-  │
-  └── Explainability Layer (SHAP)
-    │
-    ▼
-  Visualizations (Plots, KPIs, Tables)
+          ┌────────────┐
+          │  Raw Data  │
+          └─────┬──────┘
+                │
+        ┌───────▼────────┐
+        │ Preprocessing   │ → Handling missing values, normalization
+        └───────┬────────┘
+                │
+        ┌───────▼────────┐
+        │ ML Models       │ → Logistic Regression, Random Forest, XGBoost
+        └───────┬────────┘
+                │
+        ┌───────▼────────┐
+        │ Explainability  │ → SHAP values + text reasoning
+        └───────┬────────┘
+                │
+        ┌───────▼────────┐
+        │ Visualization   │ → Streamlit + Plotly
+        └────────────────┘
+
 
 ---
 
