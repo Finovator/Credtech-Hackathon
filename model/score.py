@@ -17,19 +17,39 @@ try:
     df["unemployment_norm"] = 1 - (df["unemployment_rate"] - df["unemployment_rate"].min()) / unemployment_range if unemployment_range > 0 else 0
     df["sentiment_norm"] = (df["sentiment"] + 1) / 2  # Scale -1 to 1 -> 0 to 1
 
-    # Debug: Print normalized values
-    print("Normalized values head:\n", df[["price_norm", "volatility_norm", "gdp_norm", "unemployment_norm", "sentiment_norm"]].head())
+    # Contributions
+    df["price_contrib"] = 0.20 * df["price_norm"] * 100
+    df["volatility_contrib"] = 0.20 * df["volatility_norm"] * 100
+    df["gdp_contrib"] = 0.30 * df["gdp_norm"] * 100
+    df["unemployment_contrib"] = 0.20 * df["unemployment_norm"] * 100
+    df["sentiment_contrib"] = 0.10 * df["sentiment_norm"] * 100
 
-    # Weighted average score
+    # Weighted average score (same as sum of contributions)
     df["score"] = (
-        0.20 * df["price_norm"] +
-        0.20 * df["volatility_norm"] +
-        0.30 * df["gdp_norm"] +
-        0.20 * df["unemployment_norm"] +
-        0.10 * df["sentiment_norm"]
-    ) * 100
+        df["price_contrib"] +
+        df["volatility_contrib"] +
+        df["gdp_contrib"] +
+        df["unemployment_contrib"] +
+        df["sentiment_contrib"]
+    )
 
-    df[["company", "date", "score"]].to_csv("data/scores.csv", index=False)
-    print("Scores:\n", df[["company", "date", "score"]].head(10))
+    # Add explanation with exact contributions
+    df["explanation"] = df.apply(
+        lambda row: (
+            f"Score: {row['score']:.1f}. "
+            f"Price impact: {row['price_contrib']:.1f}, "
+            f"Volatility impact: {row['volatility_contrib']:.1f}, "
+            f"GDP impact: {row['gdp_contrib']:.1f}, "
+            f"Unemployment impact: {row['unemployment_contrib']:.1f}, "
+            f"Sentiment impact: {row['sentiment_contrib']:.1f}"
+        ),
+        axis=1
+    )
+
+    # Save results
+    df[["company", "date", "score", "explanation"]].to_csv("data/scores.csv", index=False)
+
+    print("Scores with explanations:\n", df[["company", "date", "score", "explanation"]].head(10))
+
 except Exception as e:
     print("Error in scoring:", e)
