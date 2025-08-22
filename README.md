@@ -42,7 +42,7 @@ pip install -r requirements.txt
 # 4. Start the app
 streamlit run app.py
 
-🏗️ System Architecture
+## 🏗️ System Architecture
 User (Web Browser)
         │
         ▼
@@ -59,7 +59,7 @@ User (Web Browser)
          Visualizations (Plots, KPIs, Tables)
 
 
-⚖️ Key Tradeoffs
+## ⚖️ Key Tradeoffs
 
 Accuracy vs. Interpretability: Deep models could boost accuracy but reduce transparency; SHAP balances this by explaining predictions.
 
@@ -67,7 +67,7 @@ Performance vs. Usability: Chose Streamlit for rapid prototyping over heavier we
 
 Data Generality vs. Specificity: Model trained on structured company features; could be more generalizable with larger datasets.
 
-📊 Model Comparisons
+## 📊 Model Comparisons
 Model	            Accuracy	Precision	Recall	Explainability
 LogisticRegression	    82%	         0.79	  0.76	 High (coefficients + SHAP)
 RandomForest	        87%	         0.83	  0.81	 Medium (tree-based SHAP)
